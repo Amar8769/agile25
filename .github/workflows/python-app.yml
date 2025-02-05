@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest numpy pandas  # Ensure numpy & pandas are installed
+        pip install flake8 pytest numpy pandas scikit-learn matplotlib seaborn
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Debug Installed Packages
@@ -38,6 +38,6 @@ jobs:
         # Exit-zero treats all errors as warnings, allowing continued execution
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Test with pytest
+    - name: Run Lung Cancer Classification Script
       run: |
         python lung_cancer_classification.py
